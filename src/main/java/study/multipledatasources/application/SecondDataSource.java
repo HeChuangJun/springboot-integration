@@ -39,6 +39,7 @@ public class SecondDataSource {
 		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 		try {
 			bean.setMapperLocations(resolver.getResources("classpath*:mapper2/*.xml"));
+			//bean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-configuration.xml"));
 			 return bean.getObject();
 		} catch (Exception e) {
             e.printStackTrace();
