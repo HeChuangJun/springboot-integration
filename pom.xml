@@ -84,6 +84,11 @@
 		    <groupId>org.apache.activemq</groupId>
 		    <artifactId>activemq-pool</artifactId>
 	    </dependency>
+	    <!-- springboot整合freemarker -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-freemarker</artifactId>
+	    </dependency> 
     </dependencies>
 
 	<build>
@@ -92,6 +97,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- springboot整合windows服务 -->
+			<plugin>
+            <groupId>cn.joylau.code</groupId>
+            <artifactId>joylau-springboot-daemon-windows</artifactId>
+            <version>1.1.RELEASE</version>
+            <executions>
+                <execution>
+                    <id>make-win-service</id>
+                    <phase>install</phase>
+                    <goals>
+                        <goal>make-win-service</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+	            <vmOptions>           
+		            -Xbootclasspath/a:config/ -Xmx1024m -Xms512m -XX:MaxPermSize=256m -XX:PermSize=128m -Dfile.encoding=UTF-8 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=22221            
+	            </vmOptions>
+	            <arguments>
+	            </arguments>
+        	</configuration>
+        </plugin>
 		</plugins>
 	</build>
 </project>
